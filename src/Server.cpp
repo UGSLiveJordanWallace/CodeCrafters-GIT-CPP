@@ -24,28 +24,32 @@ int main(int argc, char *argv[]) {
 
 		case CAT_FILE:
 			if (argc < 4) {
+				std::cout << "Missing file parameter" << "\n";
 				return EXIT_FAILURE;
-			}
-
-			if (strncmp(argv[2], "-p", 2) == 0) {
-				if (UTILS::cat_file(argv[3]) == EXIT_FAILURE) {
-					return EXIT_FAILURE;
+			} else {
+				std::string option = argv[2];
+				if (option == "-p") {
+					if (UTILS::cat_file(argv[3]) == EXIT_FAILURE) {
+						return EXIT_FAILURE;
+					}
 				}
 			}
+
 			break;
 
 		case HASH_OBJECT:
 			if (argc < 4) {
 				std::cout << "Missing file parameter" << "\n";
 				return EXIT_FAILURE;
-			}
-
-			if (strncmp(argv[2], "-w", 2) == 0) {
-				if (UTILS::hash_object(argv[3]) == EXIT_FAILURE) {
-					return EXIT_FAILURE;
+			} else {
+				std::string option = argv[2];
+				if (option == "-w") {
+					if (UTILS::hash_object(argv[3]) == EXIT_FAILURE) {
+						return EXIT_FAILURE;
+					}
 				}
 			}
-			std::cout << argc << "\n";
+
 			break;
 
 		case INVALID:
