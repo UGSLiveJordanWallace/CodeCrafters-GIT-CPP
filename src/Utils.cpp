@@ -79,6 +79,8 @@ int UTILS::cat_file(std::string id) {
 			result = uncompress((Bytef*) decompressedContent.data(), &object_content_size, (const Bytef*)object_content.data(), object_content.length());
 		}
 
+		decompressedContent.resize(object_content_size);
+
 		int n = decompressedContent.find('\0');
 		std::cout << decompressedContent.substr(n + 1);
 		object.close();
