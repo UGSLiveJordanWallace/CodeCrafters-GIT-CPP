@@ -13,3 +13,4 @@ commits, trees etc.), Git's transfer protocols and more.
 
 
 ## Due to a paywall, I had to finish the project without passing the stages.
+> If you check the source code, you should see valid code that satisfies the rest of the challenge.
