@@ -54,6 +54,7 @@ int UTILS::hash_object(std::string filename) {
 	if (hashDumpy.is_open()) {
 		hashDumpy.write(compressedOutput.data(),compressedOutput.size());
 		hashDumpy.close();
+		std::cout << hashOutput;
 	} else {
 		std::cerr << "Failed to create .git/objects " << raw_result << " file.\n";
 		return EXIT_FAILURE;
