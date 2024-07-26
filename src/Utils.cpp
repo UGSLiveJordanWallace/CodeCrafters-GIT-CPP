@@ -71,7 +71,13 @@ int UTILS::cat_file(std::string id) {
 		std::string decompressedContent;
 		uLongf object_content_size = object_content.length();
 		decompressedContent.resize(object_content_size);
-		uncompress((Bytef*) decompressedContent.data(), &object_content_size, (const Bytef*)object_content.data(), object_content.length());
+		int result = uncompress((Bytef*) decompressedContent.data(), &object_content_size, (const Bytef*)object_content.data(), object_content.length());
+
+		while (result == Z_BUF_ERROR) {
+			object_content_size *= 2;
+			decompressedContent.resize(object_content_size);
+			result = uncompress((Bytef*) decompressedContent.data(), &object_content_size, (const Bytef*)object_content.data(), object_content.length());
+		}
 
 		int n = decompressedContent.find('\0');
 		std::cout << decompressedContent.substr(n + 1);
