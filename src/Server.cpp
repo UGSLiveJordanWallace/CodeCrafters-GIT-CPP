@@ -6,9 +6,6 @@ int main(int argc, char *argv[]) {
 	std::cout << std::unitbuf;
 	std::cerr << std::unitbuf;
 
-	// You can use print statements as follows for debugging, they'll be visible when running tests.
-	std::cout << "\nLogs from your program will appear here!\n";
-
 	if (argc < 2) {
 		std::cerr << "No command provided.\n";
 		return EXIT_FAILURE;
