@@ -8,9 +8,8 @@ initializing a repository, creating commits and cloning a public repository.
 Along the way we'll learn about the `.git` directory, Git objects (blobs,
 commits, trees etc.), Git's transfer protocols and more.
 
-**Note**: If you're viewing this repo on GitHub, head over to
-[codecrafters.io](https://codecrafters.io) to try the challenge.
-
-
-## Due to a paywall, I had to finish the project without passing the stages.
-> If you check the source code, you should see valid code that satisfies the rest of the challenge.
+## Due to a paywall, I was not able officially finish the project.
+The Features that I have implemented are down below:
+> Object Read/Write
+> Tree Read/Write
+> Commit Read/Write
