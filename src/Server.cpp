@@ -1,5 +1,6 @@
 #include "Commands.hpp"
 #include "Utils.hpp"
+#include <cstdlib>
 
 int main(int argc, char *argv[]) {
 	// Flush after every std::cout / std::cerr
@@ -21,7 +22,7 @@ int main(int argc, char *argv[]) {
 
 		case CAT_FILE:
 			if (argc < 4) {
-				std::cout << "Missing file parameter" << "\n";
+				std::cout << "Missing object hash" << "\n";
 				return EXIT_FAILURE;
 			} else {
 				std::string option = argv[2];
@@ -41,12 +42,52 @@ int main(int argc, char *argv[]) {
 			} else {
 				std::string option = argv[2];
 				if (option == "-w") {
-					if (UTILS::hash_object(argv[3]) == EXIT_FAILURE) {
+					if (UTILS::hash_object(argv[3], NULL) == EXIT_FAILURE) {
 						return EXIT_FAILURE;
 					}
 				}
 			}
 
+			break;
+
+		case LS_TREE:
+			if (argc < 3) {
+				std::cout << "Missing tree hash" << "\n";
+				return EXIT_FAILURE;
+			} else {
+				if (UTILS::ls_tree(argv[2]) == EXIT_FAILURE) {
+					return EXIT_FAILURE;
+				}
+			}
+			break;
+
+		case WRITE_TREE:
+			if (UTILS::write_tree() == EXIT_FAILURE) {
+				return EXIT_FAILURE;
+			}
+			break;
+
+		case COMMIT_TREE:
+			if (argc < 5) {
+				std::cout << "Missing <tree_hash> with commit message '-m <msg>'" << "\n";
+				return EXIT_FAILURE;
+			} else {
+				std::string msg = "";
+				std::string link = "";
+
+				if (argc == 5) {
+					msg = argv[4];
+					if (UTILS::commit_tree(argv[2], &msg, NULL) == EXIT_FAILURE) {
+						return EXIT_FAILURE;
+					}
+				} else if (argc == 7) {
+					msg = argv[6];
+					link = argv[4];
+					if (UTILS::commit_tree(argv[2], &msg, &link) == EXIT_FAILURE) {
+						return EXIT_FAILURE;
+					}
+				}
+			}
 			break;
 
 		case INVALID:

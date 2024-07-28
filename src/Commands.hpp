@@ -9,6 +9,9 @@ enum command_identifiers {
 	INIT,
 	CAT_FILE,
 	HASH_OBJECT,
+	LS_TREE,
+	WRITE_TREE,
+	COMMIT_TREE,
 	INVALID
 };
 
